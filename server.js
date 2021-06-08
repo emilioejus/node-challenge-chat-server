@@ -31,7 +31,6 @@ app.get("/messages", (req, res)=> {
 app.get("/messages/search", (req, res)=> {
   let text = req.query.text.toLowerCase();
   let exist = messages.filter(obj => obj.text.toLocaleLowerCase().includes(text))
-  console.log(text)
   if(text) {
     res.status(200).json(exist)
   }else {
@@ -71,7 +70,6 @@ app.put("/messages/:id", (req, res)=> {
   let body = req.body;
 
   messages.forEach(async (obj, index) => {
-    console.log(index)
 
     if(obj.id === id) {
       if(Object.keys(body).includes('timeSent') || Object.keys(body).includes('id')) {
